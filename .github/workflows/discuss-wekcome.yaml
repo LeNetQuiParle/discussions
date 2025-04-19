@@ -7,6 +7,7 @@ on:
 jobs:
   welcome:
     runs-on: ubuntu-latest
+    uses: actions/github-script@v6
     steps:
       - name: Comment on new discussion
         
