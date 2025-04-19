@@ -1,0 +1,21 @@
+name: Welcome Discussion Comment
+
+on:
+  discussion:
+    types: [created]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    uses: actions/github-script@v6
+    steps:
+      - name: Comment on new discussion
+
+        with:
+          script: |
+            github.rest.discussions.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              discussion_number: context.payload.discussion.number,
+              body: "Welcome to the discussion! Thanks for starting a conversation."
+            });
